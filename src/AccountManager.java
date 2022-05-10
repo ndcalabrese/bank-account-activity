@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class Main {
+public class AccountManager {
     public static void main(String[] args) {
 
         // Create list of accounts
