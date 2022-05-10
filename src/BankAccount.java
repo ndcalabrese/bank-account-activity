@@ -42,8 +42,11 @@ public class BankAccount {
         return this.accHolderName;
     }
 
-    public boolean sufficientFunds(double amount) {
-        return amount < this.accBalance;
+    public boolean hasInsufficientFunds(double amount) {
+        System.out.println("\nInsufficient funds.");
+        this.showBalance();
+
+        return amount > this.accBalance;
     }
 
     @Override

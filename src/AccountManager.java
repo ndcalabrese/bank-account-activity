@@ -50,6 +50,7 @@ public class AccountManager {
 
         String action;
         String amountString = "0";
+        double amount = 0;
 
         System.out.println("""
                 
@@ -93,12 +94,17 @@ public class AccountManager {
                 if (!isNumeric(amountString)) {
                     System.out.println("Invalid entry. Please enter an amount.");
                 } else {
-                    break;
+                    amount = Double.parseDouble(amountString);
+                    if (amount <0 ) {
+                        System.out.println("Invalid entry. Please enter an amount.");
+                    } else {
+                        break;
+                    }
                 }
             }
         }
 
-        doAcctAction(action, Double.parseDouble(amountString), accountList, selectedAccount);
+        doAcctAction(action, amount, accountList, selectedAccount);
 
     }
 
@@ -122,8 +128,8 @@ public class AccountManager {
                 manageAccount(accountList, selectedAccount);
             }
             case "3" -> {
-                if (!selectedAccount.sufficientFunds(amount)) {
-                    System.out.println("Insufficient funds.");
+                if (selectedAccount.hasInsufficientFunds(amount)) {
+                    manageAccount(accountList, selectedAccount);
                 } else {
                     selectedAccount.withdrawal(amount);
                 }
@@ -131,9 +137,7 @@ public class AccountManager {
                 manageAccount(accountList, selectedAccount);
             }
             case "4" -> {
-                if (!selectedAccount.sufficientFunds(amount)) {
-                    System.out.println("Insufficient funds.");
-                    selectedAccount.showBalance();
+                if (selectedAccount.hasInsufficientFunds(amount)) {
                     manageAccount(accountList, selectedAccount);;
                 } else {
                     selectedAccount.transfer(amount, selectAccount(accountList, true));
