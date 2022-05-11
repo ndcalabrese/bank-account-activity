@@ -11,14 +11,12 @@ public class BankAccount {
 
     // Prints balance of account by calling our custom toString() method.
      public void showBalance() {
-         System.out.println("\n" + this.toString());
+         System.out.println("\n" + this);
      }
 
      // Deposits specified amount into account.
     public void deposit(double depositAmt) {
         this.accBalance += depositAmt;
-        System.out.println("\n$" + roundAmt(depositAmt) + " deposited.");
-
     }
 
     // Withdraws specified amount from account.
@@ -26,7 +24,6 @@ public class BankAccount {
     // a transfer of funds.
     public double withdrawal(double withdrawalAmt) {
         this.accBalance -= withdrawalAmt;
-        System.out.println("\n$" + roundAmt(withdrawalAmt) + " withdrawn.");
 
         return withdrawalAmt;
     }
@@ -52,9 +49,6 @@ public class BankAccount {
     // Check if account has sufficient funds for withdrawals
     // and transfers.
     public boolean hasInsufficientFunds(double amount) {
-        System.out.println("\nInsufficient funds.");
-        this.showBalance();
-
         return amount > this.accBalance;
     }
 

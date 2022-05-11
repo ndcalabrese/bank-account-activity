@@ -148,6 +148,9 @@ public class AccountManager {
             }
             case "3" -> {
                 if (selectedAccount.hasInsufficientFunds(amount)) {
+                    System.out.println("\nInsufficient funds.");
+                    selectedAccount.showBalance();
+                    System.out.println("\n");
                     manageAccount(accountList, selectedAccount);
                 } else {
                     selectedAccount.withdrawal(amount);
@@ -157,6 +160,9 @@ public class AccountManager {
             }
             case "4" -> {
                 if (selectedAccount.hasInsufficientFunds(amount)) {
+                    System.out.println("\nInsufficient funds.");
+                    selectedAccount.showBalance();
+                    System.out.println("\n");
                     manageAccount(accountList, selectedAccount);
                 } else {
                     selectedAccount.transfer(amount, selectAccount(accountList, true));
